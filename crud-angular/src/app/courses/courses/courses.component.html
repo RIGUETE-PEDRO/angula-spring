@@ -1,3 +1,10 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-content>
+
+  <mat-toolbar class="color">
+    <span>cursos disponiveis</span>
+  </mat-toolbar>
+
 <table mat-table [dataSource]="courses" class="mat-elevation-z8">
 
   <!-- name Column -->
@@ -16,4 +23,12 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
+</mat-card-content>
+</mat-card>
 
+<style>
+  .color{
+    background-color: rgb(45, 20, 188);
+    color:white;
+  }
+</style>
