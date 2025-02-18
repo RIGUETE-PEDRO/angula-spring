@@ -1,34 +1,35 @@
 <mat-card class="example-card" appearance="outlined">
   <mat-card-content>
+    <mat-toolbar class="color">
+      <span>cursos disponiveis</span>
+    </mat-toolbar>
+    <div *ngIf="courses$ | async as courses; else loading">
+      <table mat-table [dataSource]="courses" class="mat-elevation-z8">
+        <!-- name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>curso
+          </th>
+          <td mat-cell *matCellDef="let curso">{{ curso.name }}
 
-  <mat-toolbar class="color">
-    <span>cursos disponiveis</span>
-  </mat-toolbar>
-
-<table mat-table [dataSource]="courses" class="mat-elevation-z8">
-
-  <!-- name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> curso </th>
-    <td mat-cell *matCellDef="let curso"> {{curso.name}} </td>
-  </ng-container>
-
-  <!-- categoria Column -->
-  <ng-container matColumnDef="category">
-    <th mat-header-cell *matHeaderCellDef> categoria </th>
-    <td mat-cell *matCellDef="let curso"> {{curso.category}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-</mat-card-content>
+          </td>
+        </ng-container>
+        <!-- categoria Column -->
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef>categoria</th>
+          <td mat-cell *matCellDef="let curso">{{ curso.category }}
+            <mat-icon aria-hidden="false" aria-label="categorias dos cursos">{{ curso.category | category}}</mat-icon>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <ng-template #loading>
+      <div class="loading-spiner">
+        <div *ngIf="isLoading" class="spinner-container">
+        </div>
+        <div class="spinner"></div>
+      </div>
+    </ng-template>
+  </mat-card-content>
 </mat-card>
-
-<style>
-  .color{
-    background-color: rgb(45, 20, 188);
-    color:white;
-  }
-</style>
