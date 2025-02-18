@@ -1,4 +1,4 @@
-package com.riguete.clud_spring;
+package com.loiane.clud_spring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class CludSpringApplicationTests {
 
-	public static void main(String[] args) {}
+	@Test
+	void contextLoads() {
+	}
 
 }
