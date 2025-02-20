@@ -24,22 +24,20 @@
         <!-- categoria acoes -->
         <ng-container matColumnDef="actions">
           <mat-header-cell *matHeaderCellDef>
-            <button mat-mini-fab aria-label="adicionar cursos">
+            <button mat-mini-fab aria-label="adicionar cursos" class="add-button">
               <mat-icon (click)="onAdd()">add</mat-icon>
             </button>
           </mat-header-cell>
 
           <mat-cell *matCellDef="let curso">
-            <button mat-icon-button class="color1" aria-label="adicionar curso">
+            <button mat-icon-button class="color1" aria-label="editar curso">
               <mat-icon>edit</mat-icon>
             </button>
 
-
-          <button mat-icon-button class="warning" aria-label="adicionar curso">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-
+            <button mat-icon-button class="warning" aria-label="deletar curso">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -55,15 +53,17 @@
   </mat-card-content>
 </mat-card>
 
-
 <style>
-  .color1{
+  .color1 {
     background-color: rgb(255, 255, 255);
     color: rgb(72, 72, 197);
-
-    }
-  .warning{
+  }
+  .warning {
     background-color: white;
     color: rgb(205, 37, 37);
+  }
+  .add-button {
+    background-color: rgb(45, 20, 188);
+    color: white;
   }
 </style>

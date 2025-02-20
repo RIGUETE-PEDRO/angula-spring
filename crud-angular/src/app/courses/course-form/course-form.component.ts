@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   selector: 'app-course-form',
   standalone: false,
   templateUrl: './course-form.component.html',
-  styleUrl: './course-form.component.scss'
+  styleUrls: ['./course-form.component.scss']  // Corrigido para styleUrls
 })
 export class CourseFormComponent {
   form: FormGroup;
@@ -17,7 +17,7 @@ export class CourseFormComponent {
     });
   }
 
-  ngOnInit():void{
+  ngOnInit(): void {
 
   }
 

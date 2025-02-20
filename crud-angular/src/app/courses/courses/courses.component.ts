@@ -13,7 +13,7 @@ import { relative } from 'path';
   selector: 'app-courses',
   standalone: false,
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'] // Certifique-se de que o caminho está correto
 })
 export class CoursesComponent implements OnInit {
 
