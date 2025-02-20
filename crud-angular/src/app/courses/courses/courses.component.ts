@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Dialog } from '@angular/cdk/dialog';
 import { CoursesService } from './../services/courses.service';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +7,7 @@ import { Observable,of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { relative } from 'path';
 
 @Component({
   selector: 'app-courses',
@@ -16,13 +18,14 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 export class CoursesComponent implements OnInit {
 
   courses$: Observable<Course[]>;
-  displayedColumns = ['name', 'category'];
+  displayedColumns = ['name', 'category','actions'];
   isLoading = true; // Inicialize como true
 course: any;
 
   constructor(
     private coursesService: CoursesService,
-    public dialog:MatDialog
+    public dialog:MatDialog,
+    private readonly router: Router
   ) {
     this.courses$ = this.coursesService.list().pipe(
       catchError(error =>{
@@ -38,7 +41,11 @@ course: any;
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
   }
+    onAdd(){
+      this.router.navigate(['new'], { relativeTo: this.router.routerState.root }); // Navegue para a rota 'new'
+    }
+
 }

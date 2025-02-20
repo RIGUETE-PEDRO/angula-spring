@@ -5,20 +5,41 @@
     </mat-toolbar>
     <div *ngIf="courses$ | async as courses; else loading">
       <table mat-table [dataSource]="courses" class="mat-elevation-z8">
-
         <!-- name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>curso</th>
-          <td mat-cell *matCellDef="let curso">{{ curso.name }}
-          </td>
+          <td mat-cell *matCellDef="let curso">{{ curso.name }}</td>
         </ng-container>
 
         <!-- categoria Column -->
         <ng-container matColumnDef="category">
           <th mat-header-cell *matHeaderCellDef>categoria</th>
-          <td mat-cell *matCellDef="let curso">{{ curso.category }}
-            <mat-icon aria-hidden="false" aria-label="categorias dos cursos">{{ curso.category | category}}</mat-icon>
+          <td mat-cell *matCellDef="let curso">
+            {{ curso.category }}
+            <mat-icon aria-hidden="false" aria-label="categorias dos cursos">{{
+              curso.category | category
+            }}</mat-icon>
           </td>
+        </ng-container>
+        <!-- categoria acoes -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            <button mat-mini-fab aria-label="adicionar cursos">
+              <mat-icon (click)="onAdd()">add</mat-icon>
+            </button>
+          </mat-header-cell>
+
+          <mat-cell *matCellDef="let curso">
+            <button mat-icon-button class="color1" aria-label="adicionar curso">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+
+          <button mat-icon-button class="warning" aria-label="adicionar curso">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -27,10 +48,22 @@
     </div>
     <ng-template #loading>
       <div class="loading-spiner">
-        <div *ngIf="isLoading" class="spinner-container">
-        </div>
+        <div *ngIf="isLoading" class="spinner-container"></div>
         <div class="spinner"></div>
       </div>
     </ng-template>
   </mat-card-content>
 </mat-card>
+
+
+<style>
+  .color1{
+    background-color: rgb(255, 255, 255);
+    color: rgb(72, 72, 197);
+
+    }
+  .warning{
+    background-color: white;
+    color: rgb(205, 37, 37);
+  }
+</style>

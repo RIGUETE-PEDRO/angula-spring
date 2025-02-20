@@ -7,15 +7,18 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { share } from 'rxjs';
 import { SharedModule } from '../shared/shared.module';
+import { CourseFormComponent } from './course-form/course-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [CoursesComponent],
+  declarations: [CoursesComponent, CourseFormComponent],
   imports: [
     CommonModule,
     CoursesRoutingModule,
     AppMaterialModule,
     MatProgressSpinnerModule,
     SharedModule,
+    ReactiveFormsModule
   ],
 })
 export class CoursesModule {}
